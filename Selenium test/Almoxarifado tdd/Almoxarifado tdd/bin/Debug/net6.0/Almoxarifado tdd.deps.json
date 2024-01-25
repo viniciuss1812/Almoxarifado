@@ -6,8 +6,9 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Almoxarifado tdd/1.0.0": {
+      "Almoxarifado TDD/1.0.0": {
         "dependencies": {
+          "HtmlAgilityPack": "1.11.57",
           "Microsoft.NET.Test.Sdk": "17.1.0",
           "OpenQA.Selenium.Chrome.ChromeDriverExtensions": "1.2.0",
           "Selenium.WebDriver.ChromeDriver": "121.0.6167.8500",
@@ -16,10 +17,18 @@
           "xunit.runner.visualstudio": "2.4.3"
         },
         "runtime": {
-          "Almoxarifado tdd.dll": {}
+          "Almoxarifado TDD.dll": {}
         }
       },
       "coverlet.collector/3.1.2": {},
+      "HtmlAgilityPack/1.11.57": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.57.0",
+            "fileVersion": "1.11.57.0"
+          }
+        }
+      },
       "Microsoft.CodeCoverage/17.1.0": {
         "runtime": {
           "lib/netcoreapp1.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
@@ -1175,7 +1184,7 @@
     }
   },
   "libraries": {
-    "Almoxarifado tdd/1.0.0": {
+    "Almoxarifado TDD/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1186,6 +1195,13 @@
       "sha512": "sha512-wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw==",
       "path": "coverlet.collector/3.1.2",
       "hashPath": "coverlet.collector.3.1.2.nupkg.sha512"
+    },
+    "HtmlAgilityPack/1.11.57": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zDxnHcAvi+qhZG602eKaPJKmzm0T8npKVML0RMwjrRBabpmTRtu2OVpfNkMUfYMgQ+5EllOkSeGxu0uFVV2zFw==",
+      "path": "htmlagilitypack/1.11.57",
+      "hashPath": "htmlagilitypack.1.11.57.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/17.1.0": {
       "type": "package",

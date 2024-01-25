@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado atv\\Almoxarifado\\Selenium test\\Almoxarifado tdd\\Almoxarifado tdd\\Almoxarifado tdd.csproj": {}
+    "C:\\Users\\manha.cetafest\\Documents\\Almoxarifado novo\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado atv\\Almoxarifado\\Selenium test\\Almoxarifado tdd\\Almoxarifado tdd\\Almoxarifado tdd.csproj": {
+    "C:\\Users\\manha.cetafest\\Documents\\Almoxarifado novo\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado atv\\Almoxarifado\\Selenium test\\Almoxarifado tdd\\Almoxarifado tdd\\Almoxarifado tdd.csproj",
-        "projectName": "Almoxarifado tdd",
-        "projectPath": "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado atv\\Almoxarifado\\Selenium test\\Almoxarifado tdd\\Almoxarifado tdd\\Almoxarifado tdd.csproj",
-        "packagesPath": "C:\\Users\\tarde.cetafest\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado atv\\Almoxarifado\\Selenium test\\Almoxarifado tdd\\Almoxarifado tdd\\obj\\",
+        "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\Almoxarifado novo\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+        "projectName": "Almoxarifado TDD",
+        "projectPath": "C:\\Users\\manha.cetafest\\Documents\\Almoxarifado novo\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+        "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\manha.cetafest\\Documents\\Almoxarifado novo\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tarde.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.57, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.1.0, )"
