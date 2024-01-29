@@ -25,12 +25,28 @@ public class SuiteTests : IDisposable {
     driver.Quit();
   }
   [Fact]
-  public void RN06TelaRequisioIDDepartamento() {
+  public void RN04TelaRequisioCategoriaMotivo() {
     driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
     driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-    driver.FindElement(By.Id("idDepartamento")).Click();
-    driver.FindElement(By.Id("idDepartamento")).SendKeys("10");
-    driver.FindElement(By.Id("departamento")).Click();
-    driver.FindElement(By.Id("idDepartamento")).Click();
+    driver.FindElement(By.Id("categoriaMotivo")).Click();
+    {
+      var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
+      dropdown.FindElement(By.XPath("//option[. = 'Gestão']")).Click();
+    }
+    driver.FindElement(By.Id("categoriaMotivo")).Click();
+    {
+      var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
+      dropdown.FindElement(By.XPath("//option[. = 'Cliente']")).Click();
+    }
+    driver.FindElement(By.Id("categoriaMotivo")).Click();
+    {
+      var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
+      dropdown.FindElement(By.XPath("//option[. = 'RP']")).Click();
+    }
+    driver.FindElement(By.Id("categoriaMotivo")).Click();
+    {
+      var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
+      dropdown.FindElement(By.XPath("//option[. = 'label']")).Click();
+    }
   }
 }

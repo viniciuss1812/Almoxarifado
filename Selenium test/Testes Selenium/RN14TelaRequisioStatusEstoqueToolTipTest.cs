@@ -25,12 +25,21 @@ public class SuiteTests : IDisposable {
     driver.Quit();
   }
   [Fact]
-  public void RN06TelaRequisioIDDepartamento() {
+  public void RN14TelaRequisioStatusEstoqueToolTip() {
     driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
     driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-    driver.FindElement(By.Id("idDepartamento")).Click();
-    driver.FindElement(By.Id("idDepartamento")).SendKeys("10");
-    driver.FindElement(By.Id("departamento")).Click();
-    driver.FindElement(By.Id("idDepartamento")).Click();
+    driver.FindElement(By.Id("nivel")).Click();
+    driver.FindElement(By.Id("nivel")).Click();
+    driver.FindElement(By.Id("nivel")).Click();
+    driver.FindElement(By.Id("nivel")).Click();
+    {
+      var element = driver.FindElement(By.Id("nivel"));
+      Actions builder = new Actions(driver);
+      builder.DoubleClick(element).Perform();
+    }
+    driver.FindElement(By.Id("nivel")).Click();
+    driver.FindElement(By.Id("Quantidade")).Click();
+    driver.FindElement(By.Id("nivel")).Click();
+    driver.FindElement(By.Id("nivel")).Click();
   }
 }
