@@ -23,7 +23,169 @@ namespace Almoxarifado_TDD
                 driver.Quit();
             }
            string linkapi = "https://splendorous-starlight-c2b50a.netlify.app/";
-        
+        [Theory]
+        [InlineData("10")]
+        [InlineData("33")]
+        [InlineData("40")]
+        //[InlineData("-5")]
+        //[InlineData("-10")]
+        //[InlineData("-55")]
+        //[InlineData("0")]
+        //[InlineData("-18")]
+
+        public void RN03TelaRequisioCampos( string numeros)
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("idDepartamento")).Click();
+            {
+                driver.FindElement(By.Id("idDepartamento")).SendKeys(numeros);
+                var valores = driver.FindElement(By.Id("idDepartamento")).GetAttribute("value");
+                driver.Quit() ;
+                Assert.Equal(numeros,valores);
+            }
+            //driver.FindElement(By.Id("Quantidade")).Click();
+            //{
+            //    driver.FindElement(By.Id("Quantidade")).SendKeys(numeros);
+            //    var valores = driver.FindElement(By.Id("idDepartamento")).GetAttribute("value");
+            //    driver.Quit();
+            //    Assert.Equal(numeros, valores);
+            //}
+
+
+            
+        }
+    
+
+        [Fact]
+        public void RN04TelaRequisioCategoriaMotivo()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("categoriaMotivo")).Click();
+            {
+                var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
+               
+                var pegargestao = dropdown.FindElement(By.XPath("//option[. = 'Gestão']"));
+                string gestao = pegargestao.Text;
+
+                var pegarcliente = dropdown.FindElement(By.XPath("//option[. = 'Cliente']"));
+                string cliente = pegarcliente.Text;
+
+                var pegarrp = dropdown.FindElement(By.XPath("//option[. = 'RP']"));
+                string rp = pegarrp.Text;
+
+                string[] todososmotivos = { $"{gestao}", $"{cliente}", $"{rp}" };
+                string[] categoriamotivo = { "Gestão" ,"Cliente" ,"RP"};
+                
+               
+
+                driver.Quit();
+                Assert.Equal(categoriamotivo, todososmotivos);
+            }
+          
+        }
+
+        [Fact]
+ 
+        public void RN05TelaRequisioMotivo()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("categoriaMotivo")).Click();
+            {
+                var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
+                dropdown.FindElement(By.XPath("//option[. = 'Gestão']")).Click();
+                var pegar = dropdown.FindElement(By.XPath("//option[. = 'Gestão']"));
+                string gestao = pegar.Text;
+                Thread.Sleep(3000);
+
+                dropdown.FindElement(By.XPath("//option[. = 'Planejamento']")).Click();
+                Thread.Sleep(5000);
+
+                var pegarplane = dropdown.FindElement(By.XPath("//option[. = 'Planejamento']"));
+                string plan = pegarplane.Text;
+
+
+                driver.FindElement(By.Id("Motivo")).Click();
+                dropdown.FindElement(By.XPath("//option[. = 'Financeiro']")).Click();
+                var pegarfinan = dropdown.FindElement(By.XPath("//option[. = 'Financeiro']"));
+                string fin = pegarfinan.Text;
+                Thread.Sleep(8000);
+
+                string[] motivo = { plan, fin };
+                string[] todososmotivos = { $"{plan}", $"{fin}" };
+                string[] motivoesperado = { "Planejamento", "Financeiro" };
+                driver.Quit();
+                Assert.Equal(motivoesperado, todososmotivos);
+
+                /////////////////////////////////////////////////////////////////////////
+            }
+        }
+        [Fact]
+        public void RN05TelaRequisioMotivoCliente()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("categoriaMotivo")).Click();
+            {
+                var dropdownn = driver.FindElement(By.Id("categoriaMotivo"));
+                dropdownn.FindElement(By.XPath("//option[. = 'Cliente']")).Click();
+                var pegar2 = dropdownn.FindElement(By.XPath("//option[. = 'Cliente']"));
+                string cliente = pegar2.Text;
+                Thread.Sleep(3000);
+
+                dropdownn.FindElement(By.XPath("//option[. = 'Quebra de Máquina']")).Click();
+                Thread.Sleep(5000);
+
+                var pegarmaqui = dropdownn.FindElement(By.XPath("//option[. = 'Quebra de Máquina']"));
+                string maqui = pegarmaqui.Text;
+                string motivo2 = "Quebra de Máquina";
+
+
+                Thread.Sleep(8000);
+                driver.Quit();
+
+
+                Assert.Equal(motivo2, maqui);
+            }
+            
+        }
+        [Fact]
+        public void RN05TelaRequisioMotivoRP()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("categoriaMotivo")).Click();
+            {
+                var dropdownn = driver.FindElement(By.Id("categoriaMotivo"));
+                dropdownn.FindElement(By.XPath("//option[. = 'RP']")).Click();
+                var pegar3 = dropdownn.FindElement(By.XPath("//option[. = 'RP']"));
+                string cliente = pegar3.Text;
+                Thread.Sleep(3000);
+
+                dropdownn.FindElement(By.XPath("//option[. = 'Funções']")).Click();
+                Thread.Sleep(5000);
+
+                var pegarmaqui = dropdownn.FindElement(By.XPath("//option[. = 'Funções']"));
+                string RP = pegarmaqui.Text;
+                string motivo2 = "Funções";
+
+
+                Thread.Sleep(8000);
+                driver.Quit();
+
+
+                Assert.Equal(motivo2, RP);
+            }
+
+        }
+
+
+
+
+
+
         [Theory]
            [InlineData("10")]
            [InlineData("30")]
