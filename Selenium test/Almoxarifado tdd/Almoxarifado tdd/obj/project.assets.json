@@ -338,10 +338,26 @@
           "lib/netstandard2.0/OpenQA.Selenium.Chrome.ChromeDriverExtensions.dll": {}
         }
       },
-      "Selenium.WebDriver/3.141.0": {
+      "Selenium.Support/4.17.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "10.0.3"
+          "Selenium.WebDriver": "4.17.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.17.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
           "lib/netstandard2.0/WebDriver.dll": {
@@ -352,6 +368,9 @@
           "lib/netstandard2.0/WebDriver.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
         }
       },
       "Selenium.WebDriver.ChromeDriver/121.0.6167.8500": {
@@ -886,22 +905,37 @@
         "openqa.selenium.chrome.chromedriverextensions.nuspec"
       ]
     },
-    "Selenium.WebDriver/3.141.0": {
-      "sha512": "wPqzXO3f79DzqauTZSzLMKiaBCN0Z2Mv7KvWP+hnV6EL88zh/pJJnFtdIR1X5wa3hsTOpF/bBJs45rz7kArsiA==",
+    "Selenium.Support/4.17.0": {
+      "sha512": "Ex4FJp8lD3Dsy6bJdey4wehDQrS7mYBln6oL82Ni4adWcfIz0fF7IUfyp8RK/7KkP4hzz2mu30AacvMltTdB7w==",
       "type": "package",
-      "path": "selenium.webdriver/3.141.0",
+      "path": "selenium.support/4.17.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net35/WebDriver.dll",
-        "lib/net35/WebDriver.xml",
-        "lib/net40/WebDriver.dll",
-        "lib/net40/WebDriver.xml",
-        "lib/net45/WebDriver.dll",
-        "lib/net45/WebDriver.xml",
+        "icon.png",
+        "lib/netstandard2.0/WebDriver.Support.dll",
+        "lib/netstandard2.0/WebDriver.Support.xml",
+        "selenium.support.4.17.0.nupkg.sha512",
+        "selenium.support.nuspec"
+      ]
+    },
+    "Selenium.WebDriver/4.17.0": {
+      "sha512": "wHwWPvQkgZv+k24pncPZswRdSF4AhF2bFVoF7MrY4Xw122j9L89TNGZUvdjdmscPk2XGpRK1fFQODOKopibQEw==",
+      "type": "package",
+      "path": "selenium.webdriver/4.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Selenium.WebDriver.targets",
+        "buildTransitive/Selenium.WebDriver.targets",
+        "icon.png",
         "lib/netstandard2.0/WebDriver.dll",
         "lib/netstandard2.0/WebDriver.xml",
-        "selenium.webdriver.3.141.0.nupkg.sha512",
+        "manager/linux/selenium-manager",
+        "manager/macos/selenium-manager",
+        "manager/windows/selenium-manager.exe",
+        "selenium.webdriver.4.17.0.nupkg.sha512",
         "selenium.webdriver.nuspec"
       ]
     },
@@ -1108,6 +1142,7 @@
       "HtmlAgilityPack >= 1.11.58",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "OpenQA.Selenium.Chrome.ChromeDriverExtensions >= 1.2.0",
+      "Selenium.Support >= 4.17.0",
       "Selenium.WebDriver.ChromeDriver >= 121.0.6167.8500",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.6.6",
@@ -1115,19 +1150,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\manha.cetafest\\.nuget\\packages\\": {}
+    "C:\\Users\\VINICIUS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\almoxarifado tdd\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+      "projectUniqueName": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
       "projectName": "Almoxarifado TDD",
-      "projectPath": "C:\\Users\\manha.cetafest\\Documents\\almoxarifado tdd\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
-      "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\manha.cetafest\\Documents\\almoxarifado tdd\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
+      "projectPath": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+      "packagesPath": "C:\\Users\\VINICIUS\\.nuget\\packages\\",
+      "outputPath": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\VINICIUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1164,6 +1199,10 @@
           "OpenQA.Selenium.Chrome.ChromeDriverExtensions": {
             "target": "Package",
             "version": "[1.2.0, )"
+          },
+          "Selenium.Support": {
+            "target": "Package",
+            "version": "[4.17.0, )"
           },
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
@@ -1202,7 +1241,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

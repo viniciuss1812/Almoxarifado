@@ -5,27 +5,28 @@ using OpenQA.Selenium.Interactions;
 using System.Drawing;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
+using OpenQA.Selenium.Support.UI;
 
 namespace Almoxarifado_TDD
 {
     public class UnitTest1 : IDisposable
     {
-       
 
-            public IWebDriver driver { get; private set; }
-            public IDictionary<String, Object> vars { get; private set; }
-            public IJavaScriptExecutor js { get; private set; }
-            public UnitTest1()
-            {
-                driver = new ChromeDriver();
-                js = (IJavaScriptExecutor)driver;
-                vars = new Dictionary<String, Object>();
-            }
-            public void Dispose()
-            {
-                driver.Quit();
-            }
-           string linkapi = "https://splendorous-starlight-c2b50a.netlify.app/";
+
+        public IWebDriver driver { get; private set; }
+        public IDictionary<String, Object> vars { get; private set; }
+        public IJavaScriptExecutor js { get; private set; }
+        public UnitTest1()
+        {
+            driver = new ChromeDriver();
+            js = (IJavaScriptExecutor)driver;
+            vars = new Dictionary<String, Object>();
+        }
+        public void Dispose()
+        {
+            driver.Quit();
+        }
+        string linkapi = "https://splendorous-starlight-c2b50a.netlify.app/";
         [Fact]
         public void RN01TelaRequisioCampos()
         {
@@ -80,12 +81,12 @@ namespace Almoxarifado_TDD
                 correal = corerrada;
                 Assert.Equal(coresperada, correal);
             }
-            else 
+            else
             {
                 correal = coresperada;
-                Assert.Equal(coresperada,correal);
+                Assert.Equal(coresperada, correal);
             }
-            
+
         }
         [Fact]
         public void RN01TelaRequisioCamposObrigatórios()
@@ -98,18 +99,18 @@ namespace Almoxarifado_TDD
             string coresperadaCamposObrigatórios = "rgba(231, 86, 86, 1)";
 
             var correuisição = driver.FindElement(By.Id("inpNumero")).GetCssValue("background-color");
-            var corid = driver.FindElement(By.Id("idDepartamento")).GetCssValue("background-color"); 
-            var cordepartamento = driver.FindElement(By.Id("departamento")).GetCssValue("background-color"); 
-            var cordata = driver.FindElement(By.Id("dataRequisicao")).GetCssValue("background-color"); 
-            var coridfunc = driver.FindElement(By.Id("NomeFuncionario")).GetCssValue("background-color"); 
-            var corcargo = driver.FindElement(By.Id("cargo")).GetCssValue("background-color"); 
-            var corcatmotivo = driver.FindElement(By.Id("categoriaMotivo")).GetCssValue("background-color"); 
-            var cormotivo = driver.FindElement(By.Id("Motivo")).GetCssValue("background-color"); 
-            var nivelprioridade = driver.FindElement(By.Id("radioPrioridade")).GetCssValue("background-color"); 
-            var corcodproduto = driver.FindElement(By.Id("CodigoProduto")).GetCssValue("background-color"); 
-            var cordesc = driver.FindElement(By.Id("DescricaoProduto")).GetCssValue("background-color"); 
-            var corestoque = driver.FindElement(By.Id("Estoque")).GetCssValue("background-color"); 
-            var corqtd = driver.FindElement(By.Id("Quantidade")).GetCssValue("background-color"); 
+            var corid = driver.FindElement(By.Id("idDepartamento")).GetCssValue("background-color");
+            var cordepartamento = driver.FindElement(By.Id("departamento")).GetCssValue("background-color");
+            var cordata = driver.FindElement(By.Id("dataRequisicao")).GetCssValue("background-color");
+            var coridfunc = driver.FindElement(By.Id("NomeFuncionario")).GetCssValue("background-color");
+            var corcargo = driver.FindElement(By.Id("cargo")).GetCssValue("background-color");
+            var corcatmotivo = driver.FindElement(By.Id("categoriaMotivo")).GetCssValue("background-color");
+            var cormotivo = driver.FindElement(By.Id("Motivo")).GetCssValue("background-color");
+            var nivelprioridade = driver.FindElement(By.Id("radioPrioridade")).GetCssValue("background-color");
+            var corcodproduto = driver.FindElement(By.Id("CodigoProduto")).GetCssValue("background-color");
+            var cordesc = driver.FindElement(By.Id("DescricaoProduto")).GetCssValue("background-color");
+            var corestoque = driver.FindElement(By.Id("Estoque")).GetCssValue("background-color");
+            var corqtd = driver.FindElement(By.Id("Quantidade")).GetCssValue("background-color");
             var cortotal = driver.FindElement(By.Id("total")).GetCssValue("background-color");
             driver.Quit();
             Assert.Contains(coresperadaCamposObrigatórios, correuisição);
@@ -127,15 +128,78 @@ namespace Almoxarifado_TDD
             Assert.Contains(coresperadaCamposObrigatórios, corqtd);
             Assert.Contains(coresperadaCamposObrigatórios, cortotal);
         }
+        [Fact]
+        public void RN02TelaRequisioCampos()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120); // Aumenta para 120 segundos
+
+            driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+
+            driver.FindElement(By.Id("inpNumero")).Click();
+            driver.FindElement(By.Id("idDepartamento")).Click();
+            driver.FindElement(By.Id("departamento")).Click();
+            driver.FindElement(By.Id("dataRequisicao")).Click();
+            driver.FindElement(By.Id("dataRequisicao")).Click();
+            driver.FindElement(By.Id("dataRequisicao")).Click();
+            driver.FindElement(By.Id("idFuncionario")).Click();
+            driver.FindElement(By.Id("NomeFuncionario")).Click();
+            driver.FindElement(By.Id("cargo")).Click();
+            driver.FindElement(By.Id("categoriaMotivo")).Click();
+            driver.FindElement(By.Id("categoriaMotivo")).Click();
+            driver.FindElement(By.Id("Motivo")).Click();
+            driver.FindElement(By.Id("Motivo")).Click();
+            driver.FindElement(By.Id("Motivo")).Click();
+            driver.FindElement(By.CssSelector(".camposPrincipaisLinha3")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("DescricaoProduto")).Click();
+            driver.FindElement(By.Id("Estoque")).Click();
+            driver.FindElement(By.Id("Quantidade")).Click();
+            driver.FindElement(By.Id("total")).Click();
+            var corverde = driver.FindElement(By.Id("BtnInserirItens")).GetCssValue("background-color"); ;
+            string coresperada = Convert.ToString(corverde);
+
+            var correuisição = driver.FindElement(By.Id("inpNumero")).GetCssValue("background-color");
+            var corid = driver.FindElement(By.Id("idDepartamento")).GetCssValue("background-color");
+            var cordepartamento = driver.FindElement(By.Id("departamento")).GetCssValue("background-color");
+            var cordata = driver.FindElement(By.Id("dataRequisicao")).GetCssValue("background-color");
+            var coridfunc = driver.FindElement(By.Id("NomeFuncionario")).GetCssValue("background-color");
+            var corcargo = driver.FindElement(By.Id("cargo")).GetCssValue("background-color");
+            var corcatmotivo = driver.FindElement(By.Id("categoriaMotivo")).GetCssValue("background-color");
+            var cormotivo = driver.FindElement(By.Id("Motivo")).GetCssValue("background-color");
+            var nivelprioridade = driver.FindElement(By.Id("radioPrioridade")).GetCssValue("background-color");
+            var corcodproduto = driver.FindElement(By.Id("CodigoProduto")).GetCssValue("background-color");
+            var cordesc = driver.FindElement(By.Id("DescricaoProduto")).GetCssValue("background-color");
+            var corestoque = driver.FindElement(By.Id("Estoque")).GetCssValue("background-color");
+            var corqtd = driver.FindElement(By.Id("Quantidade")).GetCssValue("background-color");
+            var cortotal = driver.FindElement(By.Id("total")).GetCssValue("background-color");
+            driver.Quit();
+
+            Assert.Equal(coresperada, correuisição);
+            Assert.Equal(coresperada, corid);
+            Assert.Equal(coresperada, cordepartamento);
+            Assert.Equal(coresperada, cordata);
+            Assert.Equal(coresperada, coridfunc);
+            Assert.Equal(coresperada, corcargo);
+            Assert.Equal(coresperada, corcatmotivo);
+            Assert.Equal(coresperada, cormotivo);
+            Assert.Equal(coresperada, nivelprioridade);
+            Assert.Equal(coresperada, corcodproduto);
+            Assert.Equal(coresperada, cordesc);
+            Assert.Equal(coresperada, corestoque);
+            Assert.Equal(coresperada, corqtd);
+            Assert.Equal(coresperada, cortotal);
+        }
+
 
 
         [Theory]
         [InlineData("10")]
         [InlineData("30")]
         [InlineData("0")]
-        
 
-        public void RN03TelaRequisioCampos( string numeros)
+
+        public void RN03TelaRequisioCampos(string numeros)
         {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
@@ -143,23 +207,23 @@ namespace Almoxarifado_TDD
             {
                 driver.FindElement(By.Id("idDepartamento")).SendKeys(numeros);
                 var valores = driver.FindElement(By.Id("idDepartamento")).GetAttribute("value");
-                Assert.Equal(numeros,valores);
+                Assert.Equal(numeros, valores);
             }
             driver.FindElement(By.Id("Quantidade")).Click();
             {
-               driver.FindElement(By.Id("Quantidade")).SendKeys(numeros);
-               var valores = driver.FindElement(By.Id("idDepartamento")).GetAttribute("value");
-               driver.Quit();
-              Assert.Equal(numeros, valores);
+                driver.FindElement(By.Id("Quantidade")).SendKeys(numeros);
+                var valores = driver.FindElement(By.Id("idDepartamento")).GetAttribute("value");
+                driver.Quit();
+                Assert.Equal(numeros, valores);
             }
-      
+
         }
         //[Fact]
         //public void RN03TelaRequisioCamposnegativo()
         //{
         //    driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
         //    driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-           
+
         //    driver.FindElement(By.Id("Quantidade")).Click();
         //    {
         //        driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
@@ -197,7 +261,7 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("categoriaMotivo")).Click();
             {
                 var dropdown = driver.FindElement(By.Id("categoriaMotivo"));
-               
+
                 var pegargestao = dropdown.FindElement(By.XPath("//option[. = 'Gestão']"));
                 string gestao = pegargestao.Text;
 
@@ -208,18 +272,18 @@ namespace Almoxarifado_TDD
                 string rp = pegarrp.Text;
 
                 string[] todososmotivos = { $"{gestao}", $"{cliente}", $"{rp}" };
-                string[] categoriamotivo = { "Gestão" ,"Cliente" ,"RP"};
-                
-               
+                string[] categoriamotivo = { "Gestão", "Cliente", "RP" };
+
+
 
                 driver.Quit();
                 Assert.Equal(categoriamotivo, todososmotivos);
             }
-          
+
         }
 
         [Fact]
- 
+
         public void RN05TelaRequisioMotivo()
         {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
@@ -281,7 +345,7 @@ namespace Almoxarifado_TDD
 
                 Assert.Equal(motivo2, maqui);
             }
-            
+
         }
         [Fact]
         public void RN05TelaRequisioMotivoRP()
@@ -313,14 +377,14 @@ namespace Almoxarifado_TDD
 
         }
 
-     [Theory]
-     [InlineData("10")]
-     [InlineData("30")]
-     [InlineData("40")]
-     [InlineData("2")]
+        [Theory]
+        [InlineData("10")]
+        [InlineData("30")]
+        [InlineData("40")]
+        [InlineData("2")]
         public void RN06TelaRequisioIDDepartamento(string valor)
         {
-        //     //testar com 30, 40 e 2
+            //     //testar com 30, 40 e 2
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
             driver.FindElement(By.Id("idDepartamento")).Click();
@@ -329,11 +393,11 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("departamento")).Click();
             driver.FindElement(By.Id("idDepartamento")).Click();
 
-           var resultado = driver.FindElement(By.Id("departamento")).GetAttribute("value");
-           string vazio = string.Empty;
+            var resultado = driver.FindElement(By.Id("departamento")).GetAttribute("value");
+            string vazio = string.Empty;
 
-           string[] Departamento = { "Sec. Educacao", "Sec. Trabalho", "NAT", vazio};
-           string contemValor = Departamento.FirstOrDefault(valor => valor == resultado);
+            string[] Departamento = { "Sec. Educacao", "Sec. Trabalho", "NAT", vazio };
+            string contemValor = Departamento.FirstOrDefault(valor => valor == resultado);
 
             string array = Convert.ToString(contemValor);
 
@@ -346,7 +410,7 @@ namespace Almoxarifado_TDD
         [InlineData("3")]
         [InlineData("7")]
         [InlineData("2")]
-        
+
         public void RN07TelaRequisioIDFunNomeFuncionrio(string idfunc)
         {
             //1, 2, 3 e 7
@@ -359,21 +423,111 @@ namespace Almoxarifado_TDD
             Thread.Sleep(3000);
             var nomefuncionario = driver.FindElement(By.Id("NomeFuncionario")).GetAttribute("value");
             string vazia = string.Empty;
-            string [] nomeespeado = {"José", "Maria", vazia, "Luiz" };
+            string[] nomeespeado = { "José", "Maria", vazia, "Luiz" };
             string contemValor = nomeespeado.FirstOrDefault(valor => valor == nomefuncionario);
 
             string array = Convert.ToString(contemValor);
 
-        
+
             driver.Quit();
 
-            Assert.Equal(nomefuncionario,array);
-           
+            Assert.Equal(nomefuncionario, array);
+
+        }
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+        [InlineData("7")]
+        public void RN08TelaRequisioIDDescricaoEstoque(string codproduto)
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120); // Aumenta para 120 segundos
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys(codproduto);
+            var nomeproduto = driver.FindElement(By.Id("DescricaoProduto")).GetAttribute("value");
+
+            var estoque = driver.FindElement(By.Id("Estoque")).GetAttribute("value");
+
+            string vazio = string.Empty;
+            string[] Nome = { "Vassoura", "Fiação", vazio };
+            string[] Quantidade = { "20", "21", vazio };
+
+            string contemnome = Nome.FirstOrDefault(valor => valor == nomeproduto);
+            string contemquantidade = Quantidade.FirstOrDefault(valor => valor == estoque);
+
+            driver.Quit();
+            Assert.Equal(contemnome, nomeproduto);
+            Assert.Equal(contemquantidade, estoque);
+
+        }
+        [Fact]
+        public void RN09TelaRequisioCampoQuantidade()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys("1");
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys("2");
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys("3");
+        }
+        [Fact]
+        public void RN12TelaRequisioNivelPrioridade()
+        { 
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            Thread.Sleep(3000);
+
+            driver.FindElement(By.Id("urgente")).Click();
+
+            Thread.Sleep(400);
+            var corurgente = driver.FindElement(By.Id("urgente")).GetCssValue("background-color");
+            driver.Quit();
+            var coresperadaurgente = "rgba(255, 0, 0, 1)";
+
+            Assert.Equal(coresperadaurgente, corurgente);
+        }
+        [Fact]
+        public void RN12TelaRequisioNivelPrioridademedio()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("medio")).Click();
+
+            Thread.Sleep(400);
+
+            var cormedio = driver.FindElement(By.Id("medio")).GetCssValue("background-color");
+            driver.Quit();
+
+            var coresperadamedio = "rgba(255, 255, 0, 1)";
+            Assert.Equal(coresperadamedio, cormedio);
+        }
+        [Fact]
+        public void RN12TelaRequisioNivelPrioridadebaixo()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("baixo")).Click();
+
+            Thread.Sleep(400);
+
+            var corbaixo = driver.FindElement(By.Id("baixo")).GetCssValue("background-color");
+            driver.Quit();
+            var coresperadabaixo = "rgba(0, 128, 0, 1)";
+            Assert.Equal(coresperadabaixo, corbaixo);
+            
         }
 
-      
     }
 }
+
 
 
 
