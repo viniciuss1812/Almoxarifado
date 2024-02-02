@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 using OpenQA.Selenium.Support.UI;
 using System;
+using Xunit;
 
 namespace Almoxarifado_TDD
 {
@@ -219,40 +220,7 @@ namespace Almoxarifado_TDD
             }
 
         }
-        //[Fact]
-        //public void RN03TelaRequisioCamposnegativo()
-        //{
-        //    driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-        //    driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-
-        //    driver.FindElement(By.Id("Quantidade")).Click();
-        //    {
-        //        driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-        //        driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-
-        //       driver.FindElement(By.Id("Quantidade")).SendKeys("-2");
-        //       Thread.Sleep(2000);
-        //       var valores = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
-        //       driver.Quit();
-        //       string[] valoresnegativos = { "-3", "-2", "-1" };
-        //       string valor = valoresnegativos.FirstOrDefault(valor => valor == valores);
-        //        Assert.Equal(valor, valores);
-
-        //    }
-        //    driver.FindElement(By.Id("Quantidade")).Click();
-        //    {
-        //        driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-        //        driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-        //        driver.FindElement(By.Id("Quantidade")).SendKeys("-1");
-        //        driver.FindElement(By.Id("Quantidade")).Click();
-        //        var valores = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
-
-        //        string[] valoresnegativos = { "-3", "-2", "-1" };
-        //        string valor = valoresnegativos.FirstOrDefault(valor => valor == valores);
-        //        Assert.Equal(valor, valores);
-        //    }
-        //}
-
+      
 
         [Fact]
         public void RN04TelaRequisioCategoriaMotivo()
@@ -565,17 +533,7 @@ namespace Almoxarifado_TDD
                 {
                     Assert.Fail();
                 }
-
-               
-
-
-                //botão só fica ativo se a quantidade for maior que 0 e menor do valor contido no estoque
-
             }
-                
-
-
-           
         }
 
         [Fact]
@@ -641,43 +599,53 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("CodigoProduto")).Click();
             driver.FindElement(By.Id("CodigoProduto")).SendKeys(codproduto);
             {
+                var codigo = driver.FindElement(By.Id("CodigoProduto")).GetAttribute("value");
                 var valorestoque = driver.FindElement(By.Id("Estoque")).GetAttribute("value");
                 var corestoque = driver.FindElement(By.Id("nivel")).GetProperty("outerHTML");
 
+                int estoqueminimo1 = 5;
+                int estoqueminimo2 = 20;
+                int estoqueminim3 = 5;
+
                 //< img src = "assets/img/vermelho.svg" alt = "" id = "nivel" class="image-with-tooltip">
-                string coresreplace = corestoque.Replace("<img","" );
-                string substring = coresreplace.Substring(0,30);
+                string coresreplace = corestoque.Replace("<img src=\"", "" );
+               // string tiraralt = "\" alt=";
+                string substring = coresreplace.Replace("\" alt=\"\" id=\"nivel\" class=\"image-with-tooltip\">", "");
                 double estoqueconvert = Convert.ToDouble(valorestoque);
-                double cálculo = estoqueconvert * 10 /100;
-
-
-                if (estoqueconvert > cálculo)
+               
+                int convertTemp = Convert.ToInt32(codigo);
+               
+                if ( convertTemp == 1)
                 {
-                    string imagemesperada = "assets/img/verde.svg";
-                    string correal = Convert.ToString(corestoque);
-                    Assert.Equal(imagemesperada, correal);
+                    double cálculo10porcentagem = estoqueconvert * 10 / 100;
+                    if (estoqueconvert > cálculo10porcentagem)
+                    {
+                        string imagemesperada = "assets/img/verde.svg";
+                        string correal = Convert.ToString(corestoque);
+                        Assert.Equal(imagemesperada, substring);
+                    }
                 }
-                //if (estoqueconvert > cálculo)
-                //{
-                //    string imagemesperada = "assets/img/verde.svg";
-                //    string correal = Convert.ToString(corestoque);
-                //    Assert.Equal(imagemesperada, correal);
-                //    //o estoque mínimo é 10, e eu tenho 9. então está abaixo do mínimo
-
-                //}
-                if (estoqueconvert < cálculo)
+                if (convertTemp == 2)
                 {
-                    string imagemesperada = "assets/img/vermelho.svg";
-                    string correal = Convert.ToString(corestoque);
-                    Assert.Equal(imagemesperada, correal);
-                    //o estoque mínimo é 10 
+                    double cálculo10porcentagem = estoqueconvert * 10 / 100;
+
+                    if (estoqueconvert > cálculo10porcentagem)
+                    {
+                        string imagemesperada = "assets/img/amarelo.svg";
+                        string correal = Convert.ToString(corestoque);
+                        Assert.Equal(imagemesperada, substring);
+                    }
                 }
+                if (convertTemp == 3)
+                {
+                    if (estoqueconvert < estoqueminim3)
+                    {
+                        string imagemesperada = "assets/img/vermelho.svg";
+                        string correal = Convert.ToString(corestoque);
+                        Assert.Equal(imagemesperada, substring);
 
-
-
-
-
-
+                    }
+                }
             }
             
         }
@@ -687,7 +655,7 @@ namespace Almoxarifado_TDD
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
             driver.FindElement(By.Id("nivel")).Click();
-            
+           
         }
 
 
