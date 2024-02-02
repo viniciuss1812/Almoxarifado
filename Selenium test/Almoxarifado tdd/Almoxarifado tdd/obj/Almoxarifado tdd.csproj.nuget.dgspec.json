@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj": {}
+    "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj": {}
   },
   "projects": {
-    "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj": {
+    "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+        "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
         "projectName": "Almoxarifado TDD",
-        "projectPath": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
-        "packagesPath": "C:\\Users\\VINICIUS\\.nuget\\packages\\",
-        "outputPath": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
+        "projectPath": "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+        "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\VINICIUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,10 +51,6 @@
             "OpenQA.Selenium.Chrome.ChromeDriverExtensions": {
               "target": "Package",
               "version": "[1.2.0, )"
-            },
-            "Selenium.Support": {
-              "target": "Package",
-              "version": "[4.17.0, )"
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
@@ -93,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

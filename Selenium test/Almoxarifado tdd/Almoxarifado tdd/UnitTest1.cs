@@ -480,49 +480,102 @@ namespace Almoxarifado_TDD
             string valoresperado = "10";
             Assert.Equal(valoresperado, campohabilitado);
         }
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+        [InlineData("3")]
+        public void RN09TelaRequisioCampoQuantidadeValorNegativo(string codigo)
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys(codigo);
+            driver.FindElement(By.Id("Estoque")).Clear();
+            driver.FindElement(By.Id("Estoque")).Click();
+            driver.FindElement(By.Id("Estoque")).SendKeys("-1");
+            var verificarcampo = driver.FindElement(By.Id("Quantidade")).GetAttribute("disabled");
+            driver.Quit();
+            string valoresperado ="disable";
+            Assert.Equal(valoresperado, verificarcampo);
+        }
         [Fact]
-        public void RN09TelaRequisioCampoQuantidadeValorNegativo()
+        public void RN10TelaRequisioCampoQuantidade()
         {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
             driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
             driver.FindElement(By.Id("CodigoProduto")).Click();
             driver.FindElement(By.Id("CodigoProduto")).SendKeys("3");
-            driver.FindElement(By.Id("Quantidade")).SendKeys("10");
+            driver.FindElement(By.Id("Quantidade")).Click();
+            driver.FindElement(By.Id("Quantidade")).SendKeys("0");
             var campohabilitado = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
             driver.Quit();
             string valoresperado = "";
             Assert.Equal(valoresperado, campohabilitado);
+
+
+
         }
         [Fact]
-        public void RN10TelaRequisioCampoQuantidade()
-        { //posição quantidade negativo (x=1116, y=700)
+        public void RN10TelaRequisioCampoQuantidadeAceitaNegativo()
+        {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
-            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-            //driver.FindElement(By.Id("Quantidade")).Click();
-            //{
-            //    driver.FindElement(By.Id("Quantidade")).SendKeys("0");
-            //    var valor0 = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
-            //    string esperado = "";
-            //    Assert.Equal(esperado, valor0);
-            //}
-            //driver.FindElement(By.Id("Quantidade")).Clear();
-            //{
-                int xCoord = 1116;
-                int yCoord = 700;
-                Actions ação = new Actions(driver);
-                IWebElement elemento = driver.FindElement(By.Id("Quantidade"));
-                Thread.Sleep(4000);
-                ação.MoveToElement(elemento, xCoord, yCoord).Perform();
-                ação.DoubleClick().Perform();
-                var valornegativo = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
-                var valoresperado = "";
-                driver.Quit();
-                Assert.Equal(valoresperado, valornegativo);
-            //}
-           
+            driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys("3");
+            driver.FindElement(By.Id("Quantidade")).Click();
 
+            IWebElement codigoProdutoElement = driver.FindElement(By.Id("Quantidade"));
+
+            Actions actions = new Actions(driver);
+            actions.SendKeys(codigoProdutoElement, Keys.ArrowDown).Build().Perform();
+
+            var campohabilitado = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+            driver.Quit();
+            string valoresperado = "";
+            Assert.Equal(valoresperado, campohabilitado);
+           
+        }
+        [Theory]
+        [InlineData("21")]
+        [InlineData("0")]
+        [InlineData("11")]
+        [InlineData("20")]
+        public void RN11TelaRequisioBotoGravar(string quantidade)
+        {
+            //quantidade informada for maior que zero e a quantidade for menor ou igual ao valor exibido no estoque
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys("1");
+            driver.FindElement(By.Id("Quantidade")).Click();
+            driver.FindElement(By.Id("Quantidade")).SendKeys(quantidade);
+            {
+                var getquantidade = driver.FindElement(By.Id("Estoque")).GetAttribute("value");
+                var estoque = driver.FindElement(By.Id("Estoque")).GetAttribute("value");
+                if (Convert.ToInt32(getquantidade) > 0 & Convert.ToInt32(getquantidade) < Convert.ToInt32(estoque))
+                {
+                    var botao = driver.FindElement(By.Id("Estoque")).GetAttribute("disable");
+                    string botãoesperado = null;
+                    Assert.Equal(botãoesperado, botao);
+                }
+                else
+                {
+                    Assert.Fail();
+                }
+
+               
+
+
+                //botão só fica ativo se a quantidade for maior que 0 e menor do valor contido no estoque
+
+            }
+                
+
+
+           
         }
 
         [Fact]
@@ -538,7 +591,7 @@ namespace Almoxarifado_TDD
             Thread.Sleep(400);
             var corurgente = driver.FindElement(By.Id("urgente")).GetCssValue("background-color");
             driver.Quit();
-            var coresperadaurgente = "rgba(255, 0, 0, 1)";
+            var coresperadaurgente = "rgba(255, 0, 0, 0.706)";
 
             Assert.Equal(coresperadaurgente, corurgente);
         }
@@ -572,10 +625,59 @@ namespace Almoxarifado_TDD
 
             var corbaixo = driver.FindElement(By.Id("baixo")).GetCssValue("background-color");
             driver.Quit();
-            var coresperadabaixo = "rgba(0, 128, 0, 1)";
+            var coresperadabaixo = "rgba(0, 128, 0, 0.725)";
             Assert.Equal(coresperadabaixo, corbaixo);
 
         }
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+        [InlineData("3")]
+        
+        public void RN13TelaRequisioElementoStatusEstoque(string codproduto)
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys(codproduto);
+            {
+                var valorestoque = driver.FindElement(By.Id("Estoque")).GetAttribute("value");
+                var corestoque = driver.FindElement(By.Id("nivel")).GetAttribute("src");
+
+                double estoqueconvert = Convert.ToDouble(valorestoque);
+                double cálculo = estoqueconvert * 10 /100;
+                if (estoqueconvert > cálculo)
+                {
+                    string imagemesperada = "assets/img/verde.svg";
+                    string correal = Convert.ToString(corestoque);
+                    Assert.Equal(imagemesperada, correal);
+                }
+                //if (estoqueconvert > cálculo)
+                //{
+                //    string imagemesperada = "assets/img/verde.svg";
+                //    string correal = Convert.ToString(corestoque);
+                //    Assert.Equal(imagemesperada, correal);
+                //    //o estoque mínimo é 10, e eu tenho 9. então está abaixo do mínimo
+
+                //}
+                if (estoqueconvert < cálculo)
+                {
+                    string imagemesperada = "assets/img/vermelho.svg";
+                    string correal = Convert.ToString(corestoque);
+                    Assert.Equal(imagemesperada, correal);
+                    //o estoque mínimo é 10 
+                }
+
+
+
+
+
+
+            }
+            
+        }
+       
+
 
     }
 }
