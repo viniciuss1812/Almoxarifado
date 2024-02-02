@@ -1115,19 +1115,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\manha.cetafest\\.nuget\\packages\\": {}
+    "C:\\Users\\tarde.cetafest\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+      "projectUniqueName": "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado tarde\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
       "projectName": "Almoxarifado TDD",
-      "projectPath": "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
-      "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\manha.cetafest\\Documents\\atualização almoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
+      "projectPath": "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado tarde\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+      "packagesPath": "C:\\Users\\tarde.cetafest\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tarde.cetafest\\Documents\\Almoxarifado tarde\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tarde.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

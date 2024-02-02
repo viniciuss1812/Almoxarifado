@@ -642,10 +642,15 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("CodigoProduto")).SendKeys(codproduto);
             {
                 var valorestoque = driver.FindElement(By.Id("Estoque")).GetAttribute("value");
-                var corestoque = driver.FindElement(By.Id("nivel")).GetAttribute("src");
+                var corestoque = driver.FindElement(By.Id("nivel")).GetProperty("outerHTML");
 
+                //< img src = "assets/img/vermelho.svg" alt = "" id = "nivel" class="image-with-tooltip">
+                string coresreplace = corestoque.Replace("<img","" );
+                string substring = coresreplace.Substring(0,30);
                 double estoqueconvert = Convert.ToDouble(valorestoque);
                 double cálculo = estoqueconvert * 10 /100;
+
+
                 if (estoqueconvert > cálculo)
                 {
                     string imagemesperada = "assets/img/verde.svg";
@@ -676,7 +681,14 @@ namespace Almoxarifado_TDD
             }
             
         }
-       
+        [Fact]
+        public void RN14TelaRequisioStatusEstoqueToolTip()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("nivel")).Click();
+            
+        }
 
 
     }
