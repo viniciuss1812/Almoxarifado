@@ -1155,11 +1155,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+      "projectUniqueName": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
       "projectName": "Almoxarifado TDD",
-      "projectPath": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+      "projectPath": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
       "packagesPath": "C:\\Users\\VINICIUS\\.nuget\\packages\\",
-      "outputPath": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
+      "outputPath": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\VINICIUS\\AppData\\Roaming\\NuGet\\NuGet.Config",

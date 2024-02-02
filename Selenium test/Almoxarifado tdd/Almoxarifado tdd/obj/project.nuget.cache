@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U3Qz82DtdrblEkvMP4imC3/6EIyp01Z1hkZdOpdle05fVvvqmJsB/Sb3Shs7CcwzjrJ7wHU3SwKK7NKn8LEK1w==",
+  "dgSpecHash": "aNH9SMOIMtHFpau/Ro9BZcTI4iU7S4Z79TfgRV1yXjLW47ZIjWUAF97Z7vSsLlo0CcZvkyXAKQuA3JXed7xDwg==",
   "success": true,
-  "projectFilePath": "D:\\TUDO DA C\\Documents\\novoalmoxarifado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
+  "projectFilePath": "D:\\TUDO DA C\\Documents\\clone amoxarifado atualizado\\Almoxarifado\\Selenium test\\Almoxarifado TDD\\Almoxarifado TDD\\Almoxarifado TDD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VINICIUS\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\VINICIUS\\.nuget\\packages\\htmlagilitypack\\1.11.58\\htmlagilitypack.1.11.58.nupkg.sha512",

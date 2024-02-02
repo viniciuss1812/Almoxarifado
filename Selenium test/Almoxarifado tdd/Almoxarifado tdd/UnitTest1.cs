@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Almoxarifado_TDD
 {
@@ -461,21 +462,72 @@ namespace Almoxarifado_TDD
             Assert.Equal(contemquantidade, estoque);
 
         }
-        [Fact]
-        public void RN09TelaRequisioCampoQuantidade()
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+
+        public void RN09TelaRequisioCampoQuantidade(string codigo)
         {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+
             driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
             driver.FindElement(By.Id("CodigoProduto")).Click();
-            driver.FindElement(By.Id("CodigoProduto")).SendKeys("1");
-            driver.FindElement(By.Id("CodigoProduto")).Click();
-            driver.FindElement(By.Id("CodigoProduto")).SendKeys("2");
-            driver.FindElement(By.Id("CodigoProduto")).Click();
-            driver.FindElement(By.Id("CodigoProduto")).SendKeys("3");
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys(codigo);
+            driver.FindElement(By.Id("Quantidade")).SendKeys("10");
+            var campohabilitado = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+            driver.Quit();
+            string valoresperado = "10";
+            Assert.Equal(valoresperado, campohabilitado);
         }
         [Fact]
+        public void RN09TelaRequisioCampoQuantidadeValorNegativo()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
+            driver.FindElement(By.Id("CodigoProduto")).Click();
+            driver.FindElement(By.Id("CodigoProduto")).SendKeys("3");
+            driver.FindElement(By.Id("Quantidade")).SendKeys("10");
+            var campohabilitado = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+            driver.Quit();
+            string valoresperado = "";
+            Assert.Equal(valoresperado, campohabilitado);
+        }
+        [Fact]
+        public void RN10TelaRequisioCampoQuantidade()
+        { //posição quantidade negativo (x=1116, y=700)
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            //driver.FindElement(By.Id("Quantidade")).Click();
+            //{
+            //    driver.FindElement(By.Id("Quantidade")).SendKeys("0");
+            //    var valor0 = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+            //    string esperado = "";
+            //    Assert.Equal(esperado, valor0);
+            //}
+            //driver.FindElement(By.Id("Quantidade")).Clear();
+            //{
+                int xCoord = 1116;
+                int yCoord = 700;
+                Actions ação = new Actions(driver);
+                IWebElement elemento = driver.FindElement(By.Id("Quantidade"));
+                Thread.Sleep(4000);
+                ação.MoveToElement(elemento, xCoord, yCoord).Perform();
+                ação.DoubleClick().Perform();
+                var valornegativo = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+                var valoresperado = "";
+                driver.Quit();
+                Assert.Equal(valoresperado, valornegativo);
+            //}
+           
+
+        }
+
+        [Fact]
         public void RN12TelaRequisioNivelPrioridade()
-        { 
+        {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
             driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
@@ -522,7 +574,7 @@ namespace Almoxarifado_TDD
             driver.Quit();
             var coresperadabaixo = "rgba(0, 128, 0, 1)";
             Assert.Equal(coresperadabaixo, corbaixo);
-            
+
         }
 
     }
