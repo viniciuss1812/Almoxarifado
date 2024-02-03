@@ -13,7 +13,9 @@ namespace Almoxarifado_TDD
 {
     public class UnitTest1 : IDisposable
     {
-
+        // Versão Chrome 
+        //Versão Selemium 
+        //Versão DoNet
 
         public IWebDriver driver { get; private set; }
         public IDictionary<String, Object> vars { get; private set; }
@@ -42,7 +44,7 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("idFuncionario")).SendKeys("1");
             driver.FindElement(By.Id("NomeFuncionario")).Click();
             driver.FindElement(By.Id("NomeFuncionario")).Clear();
-            //var cornomefuncinicial = driver.FindElement(By.Id("NomeFuncionario")).GetCssValue("background-color");
+            var cornomefuncinicial = driver.FindElement(By.Id("NomeFuncionario")).GetCssValue("background-color");
             Thread.Sleep(800);
             driver.FindElement(By.Id("dataRequisicao")).SendKeys("02022024");
             driver.FindElement(By.Id("urgente")).Click();
@@ -75,19 +77,10 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("Quantidade")).SendKeys("20");
             driver.FindElement(By.CssSelector("#btn-gravar > span")).Click();
             var selecionarcornome = driver.FindElement(By.Id("NomeFuncionario")).GetCssValue("background-color");
-            string corerrada = "vermelho";
-            string coresperada = "branca";
+           
             string correal = selecionarcornome.ToString();
-            if (correal == "\"rgba(231, 86, 86, 1)\"")
-            {
-                correal = corerrada;
-                Assert.Equal(coresperada, correal);
-            }
-            else
-            {
-                correal = coresperada;
-                Assert.Equal(coresperada, correal);
-            }
+            Assert.Equal(cornomefuncinicial, correal);
+         
 
         }
         [Fact]
@@ -220,7 +213,32 @@ namespace Almoxarifado_TDD
             }
 
         }
-      
+        [Fact]
+        public void RN03TelaRequisioCamposNegativo()
+        {
+            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
+            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
+            driver.FindElement(By.Id("idDepartamento")).Click();
+            {
+                driver.FindElement(By.Id("idDepartamento")).SendKeys("-1");
+                var valores = driver.FindElement(By.Id("idDepartamento")).GetAttribute("value");
+                string valoresperado = "-1";
+                Assert.Equal(valoresperado, valores);
+            }
+            driver.FindElement(By.Id("Quantidade")).Click();
+            {
+                IWebElement valornegativo = driver.FindElement(By.Id("Quantidade"));
+                Actions actions = new Actions(driver);
+                actions.SendKeys(valornegativo, Keys.ArrowDown).Build().Perform();
+
+                string valoresperado = "-1";
+                var valores = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+                driver.Quit();
+                Assert.Equal(valoresperado, valores);
+            }
+
+        }
+
 
         [Fact]
         public void RN04TelaRequisioCategoriaMotivo()
@@ -242,8 +260,6 @@ namespace Almoxarifado_TDD
 
                 string[] todososmotivos = { $"{gestao}", $"{cliente}", $"{rp}" };
                 string[] categoriamotivo = { "Gestão", "Cliente", "RP" };
-
-
 
                 driver.Quit();
                 Assert.Equal(categoriamotivo, todososmotivos);
@@ -382,7 +398,7 @@ namespace Almoxarifado_TDD
 
         public void RN07TelaRequisioIDFunNomeFuncionrio(string idfunc)
         {
-            //1, 2, 3 e 7
+           
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
             driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
             driver.FindElement(By.Id("idFuncionario")).Click();
@@ -433,11 +449,12 @@ namespace Almoxarifado_TDD
         [Theory]
         [InlineData("1")]
         [InlineData("2")]
+        [InlineData("3")]
 
         public void RN09TelaRequisioCampoQuantidade(string codigo)
         {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(150);
 
             driver.Manage().Window.Size = new System.Drawing.Size(1552, 832);
             driver.FindElement(By.Id("CodigoProduto")).Click();
@@ -449,9 +466,9 @@ namespace Almoxarifado_TDD
             Assert.Equal(valoresperado, campohabilitado);
         }
         [Theory]
-        [InlineData("1")]
-        [InlineData("2")]
-        [InlineData("3")]
+        [InlineData("5")]
+        [InlineData("6")]
+        [InlineData("7")]
         public void RN09TelaRequisioCampoQuantidadeValorNegativo(string codigo)
         {
             driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
@@ -477,10 +494,10 @@ namespace Almoxarifado_TDD
             driver.FindElement(By.Id("CodigoProduto")).SendKeys("3");
             driver.FindElement(By.Id("Quantidade")).Click();
             driver.FindElement(By.Id("Quantidade")).SendKeys("0");
-            var campohabilitado = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
+            var quantidadevalor = driver.FindElement(By.Id("Quantidade")).GetAttribute("value");
             driver.Quit();
             string valoresperado = "";
-            Assert.Equal(valoresperado, campohabilitado);
+            Assert.Equal(valoresperado, quantidadevalor);
 
 
 
@@ -686,66 +703,7 @@ namespace Almoxarifado_TDD
 
 
 
-    // [Fact]
-    //        public void RN06TelaRequisioIDDepartamentoID10()
-    //        {
-    //            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-    //            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-    //            driver.FindElement(By.Id("idDepartamento")).Click();
-    //            driver.FindElement(By.Id("idDepartamento")).SendKeys("10");
-
-    //            Thread.Sleep(3000);
-
-    //            var resultado = driver.FindElement(By.Id("departamento")).GetAttribute("value");
-    //            string veDepartamento = "Sec. Educacao";
-    //            driver.Quit();
-    //            Assert.Equal(resultado, veDepartamento);
-
-    //        }
-    //        [Theory]
-    //        [InlineData("1")]
-    //        [InlineData("4")]
-    //        public void CT03R03RequisicaoQtdItem(string valoresperado)
-    //        {
-    //            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-    //            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-    //            driver.FindElement(By.Id("CodigoProduto")).Click();
-    //            driver.FindElement(By.Id("CodigoProduto")).SendKeys("1");
-    //            driver.FindElement(By.Id("Quantidade")).Click();
-    //            driver.FindElement(By.Id("CodigoProduto")).SendKeys(valoresperado);
-    //            driver.FindElement(By.CssSelector("#BtnInserirItens > span")).Click();
-    //            Thread.Sleep(3000);
-    //            IWebElement tabela = driver.FindElement(By.Id("tabelaItens"));
-    //            IWebElement celula = tabela.FindElement(By.XPath(".//tr[1]/[3]"));
-
-    //            string valorencontrado = celula.Text;
-    //            driver.Quit();
-    //            Assert.Equal(valoresperado, valorencontrado);
-    //        }
-
-    //        [Theory]
-    //        [InlineData("1")]
-    //        [InlineData("2")]
-    //        public void RequisicaoTotal(string valoresperado)
-    //        {
-    //            driver.Navigate().GoToUrl("https://splendorous-starlight-c2b50a.netlify.app/");
-    //            driver.Manage().Window.Size = new System.Drawing.Size(1936, 1048);
-    //            driver.FindElement(By.Id("CodigoProduto")).Click();
-    //           Thread.Sleep(4000);
-
-
-    //            driver.FindElement(By.Id("CodigoProduto")).SendKeys(valoresperado);
-    //            driver.FindElement(By.CssSelector("#BtnInserirItens > span")).Click();
-    //            Thread.Sleep(3000);
-
-
-    //            IWebElement tabela = driver.FindElement(By.Id("tabelaItens"));
-    //            IWebElement celula = tabela.FindElement(By.XPath(".//tr[1]/[6]"));
-
-    //            string valorencontrado = celula.Text;
-    //            driver.Quit();
-    //            Assert.Equal(valoresperado, valorencontrado);
-    //        }
+ 
 
 
 
