@@ -58,30 +58,79 @@ function carregarCategoria(){
         opt.value = objCat.idCategoria;
         elementCategoria.appendChild(opt);
     })
-    // console.log(categorias);
-    function carregarMotivoAoAlterarCategoria(){
-        const elementCategoria = document.getElementById("categoriaMotivo");
-        elementCategoria.addEventListener("change", function(){
-            let valorEscolhido = elementCategoria.value;
-            const motivosfiltrados = motivos.filter((obj) => obj.idCategoria==valorEscolhido)
 
-            const elementMotivo = document.getElementById("Motivo");
-            elementMotivo.innerHTML = "";
-            motivosFiltrados.forEach(function(item)){
-                let opt = document.createElement('option');
-                opt.text = item.Descricao;
-                opt.value = item.IdMotivo;
-                elementMotivo.appendChild(opt);
-            }
-
-        })
-    }
-    function carregarNomeDepartamentoAoAlterarIDDep(){
-        const elementIdDep = document.getElementById("idDepartamento");
-        elementIdDep.addEventListener("keyup", fuction)
-    }
 }
+    // console.log(categorias);
+function carregarMotivoAoAlterarCategoria(){
+    const elementCategoria = document.getElementById("categoriaMotivo");
+    elementCategoria.addEventListener("change", function(){
+        let valorEscolhido = elementCategoria.value;
+        const motivosfiltrados = motivos.filter((obj) => obj.idCategoria==valorEscolhido)
 
-carregarCategoria();
-adicionarCorFundoAoFocar();
-adicionarCamposAceitarSomenteInteiro();
+        const elementMotivo = document.getElementById("Motivo");
+        elementMotivo.innerHTML = "";
+        motivosFiltrados.forEach(function(item)){
+            let opt = document.createElement('option');
+            opt.text = item.Descricao;
+            opt.value = item.IdMotivo;
+            elementMotivo.appendChild(opt);
+        }
+
+    }) 
+}
+       
+function carregarNomeDepartamentoAoAlterarIDDep()
+{
+        const elementIdDep = document.getElementById("idDepartamento");
+        elementIdDep.addEventListener("change", function() {
+           const ValorPesquisar = elementIdDep.value;
+          const departamentoEncontrado = departamentos.find((dep) => dep.Codigo == ValorPesquisar)
+          if(departamentoEncontrado!= undefined){
+           document.getElementById("departamento").value = departamentoEncontrado.Descricao;
+           document.getElementById("cargo").value = funcionarioencontrado.idCargo;
+
+           }
+          else{
+            document.getElementById("NomeFuncionario").value = "";
+            document.getElementById("cargo").value ="";
+          }
+            
+        }) 
+
+}
+function carregarNomeFuncionarioAoAlterarIDDep(){
+        const elementFun = document.getElementById("idFuncionario")
+        elementFun.addEventListener("keyup", function() {
+            const valorPesquisar = elementFun.value
+            const funcionarioEncontrado = funcionarios.find((dep) => dep.idFunc==valorPesquisar)
+            console.log(funcionarioEncontrado)
+            if(funcionarioEncontrado!=undefined){
+                document.getElementById("NomeFuncionario").value=funcionarioEncontrado.Responsavel;
+                document.getElementById("cargo").value=funcionarioEncontrado.idCargo;
+            }else{
+                document.getElementById("NomeFuncionario").value="";
+                document.getElementById("cargo").value="";
+            }
+        })
+       
+    
+}
+    
+function carregarProdutosPorID(){
+        const elementIdProd = document.getElementById("CodigoProduto");
+        elementIdProd.addEventListener("keyup", function(){
+            const valorPesquisar = elementIdProd.value;
+            const produtoEncontrado = produtos.find((obj) =>obj.idProduto==valorPesquisar);
+    
+            if(produtoEncontrado!=undefined) {
+                document.getElementById("DescricaoProduto").value=produtoEncontrado.Descricao
+            }
+        })
+}
+    
+    carregarCategoria();
+    adicionarCorFundoAoFocar();
+    adicionarCamposAceitarSomenteInteiro();
+    carregarMotivoAoAlterarCategoria();
+    carregarNomeDepartamentoAoAlterarIDDep();
+    carregarNomeFuncionarioAoAlterarIDDep();
