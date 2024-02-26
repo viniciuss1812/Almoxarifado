@@ -11,9 +11,11 @@ namespace Almoxarifado_API.Controllers
     public class ProdutoController : ControllerBase
     {
        private readonly  IProdutoRepository _produtoRepository;
-         public ProdutoController(IProdutoRepository repositorio)
+       private readonly ICategoriaRepository _categoriaRepository;
+         public ProdutoController(IProdutoRepository repositorio, ICategoriaRepository categoria)
          {
             _produtoRepository = repositorio;
+            _categoriaRepository = categoria;
          }
         [HttpGet]
         [Route("Hello")]  
@@ -56,7 +58,6 @@ namespace Almoxarifado_API.Controllers
         {
             try
             {
-                
                 _produtoRepository.Add(
                     new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = null }
                     );
@@ -91,7 +92,7 @@ namespace Almoxarifado_API.Controllers
         }
         [HttpGet]
         [Route("{id}/GetProduto")]
-        public IActionResult GetProduto( int id)
+        public IActionResult GetProduto(int id)
         {
             return Ok(_produtoRepository.GetAll().Find(x=> x.id== id));
         }
@@ -117,6 +118,30 @@ namespace Almoxarifado_API.Controllers
             {
 
                 return BadRequest("Erro em fazer download: " + ex.Message);
+            }
+         
+        }
+        [HttpGet]
+        [Route("{id}/GetCategoria")]
+        public IActionResult GetCategoria(int id) 
+        {
+            try
+            {
+                var categoria = _categoriaRepository.GetAll().Find(x => x.id == id);
+                if (categoria.descricao== null)
+                {
+                    return Ok("Produto não existe");
+                }
+                else
+                {
+
+                    return Ok(categoria);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Erro em recuperar a descrição: " + ex.Message);
             }
          
         }

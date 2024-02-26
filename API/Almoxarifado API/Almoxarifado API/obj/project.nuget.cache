@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p+FeP3EJcY9pQIJV5DM+Cuk3LeuMlwB2icW4Oc/dmOJWfn4dd3+wnXWGLnkkKGOPtowZ+iCFk4kN1RZEPumXOA==",
+  "dgSpecHash": "LJrqy0i780RWrXJEjyOMzdIMy1Mgj4k6djfOTVCeQUerEwncWNPh1tXYMhNo+S3tRhXftakSAoHJFkpe1gFDgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\manha.cetafest\\Documents\\aula sabado\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj",
+  "projectFilePath": "C:\\Users\\manha.cetafest\\Documents\\clone api\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\manha.cetafest\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\manha.cetafest\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
