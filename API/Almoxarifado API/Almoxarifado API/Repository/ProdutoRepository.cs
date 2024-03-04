@@ -16,6 +16,12 @@ namespace Almoxarifado_API.Repository
         {
             return bdConexao.Produto.ToList();
         }
+        public void Update(Produto produto) 
+        {
+           bdConexao.Update(produto);   
+           bdConexao.SaveChanges();    
+        }
+
 
     }
 }

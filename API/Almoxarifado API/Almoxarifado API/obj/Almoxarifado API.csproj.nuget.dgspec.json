@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\manha.cetafest\\Documents\\clone api\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj": {}
+    "C:\\Users\\manha.cetafest\\Documents\\segunda\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\manha.cetafest\\Documents\\clone api\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj": {
+    "C:\\Users\\manha.cetafest\\Documents\\segunda\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\clone api\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj",
+        "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\segunda\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj",
         "projectName": "Almoxarifado API",
-        "projectPath": "C:\\Users\\manha.cetafest\\Documents\\clone api\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj",
+        "projectPath": "C:\\Users\\manha.cetafest\\Documents\\segunda\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\Almoxarifado API.csproj",
         "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manha.cetafest\\Documents\\clone api\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\obj\\",
+        "outputPath": "C:\\Users\\manha.cetafest\\Documents\\segunda\\Almoxarifado\\API\\Almoxarifado API\\Almoxarifado API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",

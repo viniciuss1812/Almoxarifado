@@ -53,49 +53,86 @@ namespace Almoxarifado_API.Controllers
         
         }
         [HttpPost]
-        [Route("AdicionarProdutoSemFoto")]
-        public IActionResult AdicionarProdutoSemFoto([FromForm]ProdutoViewModelSemFoto produto)
+        [Route("AdicioanProdutoSemFoto")]
+        public IActionResult AdicionarProdutoSemFoto(ProdutoViewModelSemFoto produto)
         {
             try
             {
                 _produtoRepository.Add(
-                    new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = null }
-                    );
+                  new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = null }
+                );
+
                 return Ok("Cadastrado com Sucesso");
             }
             catch (Exception ex)
             {
 
-                return BadRequest("Não Cadastrado, Erro:" + ex.Message);
+                return BadRequest("Não Cadastrado. Erro: " + ex.Message);
             }
+
         }
+
+        [HttpPut]
+        [Route("AtualizarProdutoSemFoto")]
+        public IActionResult AtualizarProdutoSemFoto(ProdutoViewModelUpdateSemFoto produto)
+        {
+            try
+            {
+                //var produtoAtualizar = _produtoRepository.GetAll().Find(x => x.id == produto.id);
+
+                Produto produtoAtaulizar = new Produto
+                {
+                    id = produto.id,
+                    nome = produto.nome,
+                    estoque = produto.estoque
+                };
+
+                _produtoRepository.Update(produtoAtaulizar);
+
+                return Ok("Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não Ataulizado. Erro: " + ex.Message);
+            }
+
+        }
+
+
         [HttpPost]
-        [Route("AdicionarProdutoComFoto")]
-        public IActionResult AdicionarProdutoComFoto([FromForm]ProdutoViewModelComFoto produto)
+        [Route("AdicioanProdutoComFoto")]
+        public IActionResult AdicionarProdutoComFoto([FromForm] ProdutoViewModelComFoto produto)
         {
             try
             {
                 var caminho = Path.Combine("Storage", produto.photourl.FileName);
+
                 using Stream fileStream = new FileStream(caminho, FileMode.Create);
                 produto.photourl.CopyTo(fileStream);
 
                 _produtoRepository.Add(
-                    new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = caminho}
-                    );
+                  new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = caminho }
+                );
+
                 return Ok("Cadastrado com Sucesso");
             }
             catch (Exception ex)
             {
 
-               return BadRequest("Não Cadastrado, Erro:" + ex.Message );
+                return BadRequest("Não Cadastrado. Erro: " + ex.Message);
             }
+
         }
+
         [HttpGet]
         [Route("{id}/GetProduto")]
         public IActionResult GetProduto(int id)
         {
-            return Ok(_produtoRepository.GetAll().Find(x=> x.id== id));
+
+            return Ok(_produtoRepository.GetAll().Find(x => x.id == id));
         }
+
         [HttpGet]
         [Route("{id}/Download")]
         public IActionResult Download(int id)
@@ -105,45 +142,24 @@ namespace Almoxarifado_API.Controllers
                 var produto = _produtoRepository.GetAll().Find(x => x.id == id);
                 if (produto.photourl == null)
                 {
-                    return Ok("Não existe foto cadastrada para o Produto");
+                    return Ok("Não existe falta cadastrada para o Produto");
                 }
                 else
                 {
                     var dataBytes = System.IO.File.ReadAllBytes(produto.photourl);
-                    return File(dataBytes, "image/jpng");
-                }
+                    return File(dataBytes, "image/jpg");
 
+                }
             }
             catch (Exception ex)
             {
 
                 return BadRequest("Erro em fazer download: " + ex.Message);
             }
-         
-        }
-        [HttpGet]
-        [Route("{id}/GetCategoria")]
-        public IActionResult GetCategoria(int id) 
-        {
-            try
-            {
-                var categoria = _categoriaRepository.GetAll().Find(x => x.id == id);
-                if (categoria.descricao== null)
-                {
-                    return Ok("Produto não existe");
-                }
-                else
-                {
 
-                    return Ok(categoria);
-                }
-            }
-            catch (Exception ex)
-            {
 
-                return BadRequest("Erro em recuperar a descrição: " + ex.Message);
-            }
-         
         }
     }
+
+
 }

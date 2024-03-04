@@ -6,5 +6,6 @@ namespace Almoxarifado_API.Repository
     {
         List<Produto> GetAll();
         void Add(Produto produto);  
+        void Update(Produto produto);   
     }
 }
