@@ -10,6 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IProdutoRepository,ProdutoRepository>();
+builder.Services.AddTransient<IDepartamentoRepository, DepartamentoRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

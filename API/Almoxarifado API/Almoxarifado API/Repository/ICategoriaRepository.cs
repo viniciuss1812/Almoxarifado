@@ -4,7 +4,7 @@ namespace Almoxarifado_API.Repository
 {
     public interface ICategoriaRepository
     {
-        List<Categoria> GetAll();
+        List<CategoriaMotivo> GetAll();
         //void Add(Produto produto);
     }
 }

@@ -11,46 +11,54 @@ namespace Almoxarifado_API.Controllers
     public class ProdutoController : ControllerBase
     {
        private readonly  IProdutoRepository _produtoRepository;
-       private readonly ICategoriaRepository _categoriaRepository;
-         public ProdutoController(IProdutoRepository repositorio, ICategoriaRepository categoria)
+     
+         public ProdutoController(IProdutoRepository repositorio)
          {
             _produtoRepository = repositorio;
-            _categoriaRepository = categoria;
+   
          }
-        [HttpGet]
-        [Route("Hello")]  
-        public IActionResult Hello()
-        {
-            return Ok("Hello Mundo");
-        }
-        [HttpGet]
-        [Route("GetAllFake")]
-        public IActionResult GetAllFake()
-        {
-            var produtos = new List<Produto>()
-            {
-              new Produto()
-              {
-                  id = 1,
-                  nome = "PC HP",
-                  estoque = 10
-              },
-               new Produto()
-               {
-                  id = 2,
-                  nome = "PC DELL",
-                  estoque = 20
-               }
+        //[HttpGet]
+        //[Route("Hello")]  
+        //public IActionResult Hello()
+        //{
+        //    return Ok("Hello Mundo");
+        //}
+        //[HttpGet]
+        //[Route("GetAllFake")]
+        //public IActionResult GetAllFake()
+        //{
+        //    var produtos = new List<Produto>()
+        //    {
+        //      new Produto()
+        //      {
+        //          id = 1,
+        //          nome = "PC HP",
+        //          estoque = 10
+        //      },
+        //       new Produto()
+        //       {
+        //          id = 2,
+        //          nome = "PC DELL",
+        //          estoque = 20
+        //       }
 
-            };
-            return Ok(produtos);    
-        }
+        //    };
+        //    return Ok(produtos);    
+        //}
         [HttpGet]
-        [Route("GetAll")]
-        public IActionResult GetAll() 
+        [Route("TodosProdutos")]
+        public IActionResult TodosProdutos() 
         {
             return Ok(_produtoRepository.GetAll());
         
+        }
+
+        [HttpGet]
+        [Route("{id}/GetProduto")]
+        public IActionResult GetProduto(int id)
+        {
+
+            return Ok(_produtoRepository.GetAll().Find(x => x.id == id));
         }
         [HttpPost]
         [Route("AdicioanProdutoSemFoto")]
@@ -68,33 +76,6 @@ namespace Almoxarifado_API.Controllers
             {
 
                 return BadRequest("Não Cadastrado. Erro: " + ex.Message);
-            }
-
-        }
-
-        [HttpPut]
-        [Route("AtualizarProdutoSemFoto")]
-        public IActionResult AtualizarProdutoSemFoto(ProdutoViewModelUpdateSemFoto produto)
-        {
-            try
-            {
-                //var produtoAtualizar = _produtoRepository.GetAll().Find(x => x.id == produto.id);
-
-                Produto produtoAtaulizar = new Produto
-                {
-                    id = produto.id,
-                    nome = produto.nome,
-                    estoque = produto.estoque
-                };
-
-                _produtoRepository.Update(produtoAtaulizar);
-
-                return Ok("Atualizado com Sucesso");
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest("Não Ataulizado. Erro: " + ex.Message);
             }
 
         }
@@ -124,15 +105,32 @@ namespace Almoxarifado_API.Controllers
             }
 
         }
-
-        [HttpGet]
-        [Route("{id}/GetProduto")]
-        public IActionResult GetProduto(int id)
+        [HttpPut]
+        [Route("AtualizarProdutoSemFoto")]
+        public IActionResult AtualizarProdutoSemFoto(ProdutoViewModelUpdateSemFoto produto)
         {
+            try
+            {
+                //var produtoAtualizar = _produtoRepository.GetAll().Find(x => x.id == produto.id);
 
-            return Ok(_produtoRepository.GetAll().Find(x => x.id == id));
+                Produto produtoAtaulizar = new Produto
+                {
+                    id = produto.id,
+                    nome = produto.nome,
+                    estoque = produto.estoque
+                };
+
+                _produtoRepository.Update(produtoAtaulizar);
+
+                return Ok("Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não Ataulizado. Erro: " + ex.Message);
+            }
+
         }
-
         [HttpGet]
         [Route("{id}/Download")]
         public IActionResult Download(int id)

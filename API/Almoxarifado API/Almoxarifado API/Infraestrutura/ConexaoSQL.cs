@@ -17,7 +17,7 @@ namespace Almoxarifado_API.Infraestrutura
              );
 
         public DbSet<Produto> Produto { get; set; }
-        public DbSet<Categoria> Categoria { get; set; } 
-        public DbSet<Departamento> departamentos { get; set; }
+        public DbSet<CategoriaMotivo> Categoria { get; set; } 
+        public DbSet<Departamento> Departamento { get; set; }
     }
 }

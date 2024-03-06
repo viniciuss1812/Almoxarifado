@@ -11,7 +11,7 @@ namespace Almoxarifado_API.Repository
           //  bdConexao.Add(produto);
          //   bdConexao.SaveChanges();
       //  }
-        public List<Categoria> GetAll()
+        public List<CategoriaMotivo> GetAll()
         {
             return bdConexao.Categoria.ToList();
         }

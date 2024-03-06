@@ -6,8 +6,8 @@ namespace Almoxarifado_API.Models
     {
         [Key]
         public int id { get; set; }
-        public int decricao { get; set; }
-        public int ativo { get; set; }
+        public string descricao { get; set; }
+        public string situacao { get; set; }
 
     }
 }

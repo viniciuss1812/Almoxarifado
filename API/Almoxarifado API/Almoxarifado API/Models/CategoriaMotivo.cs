@@ -2,7 +2,7 @@
 
 namespace Almoxarifado_API.Models
 {
-    public class Categoria
+    public class CategoriaMotivo
     {
         [Key]
         public int id { get; set; }
