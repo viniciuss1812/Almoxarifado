@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IProdutoRepository,ProdutoRepository>();
 builder.Services.AddTransient<IDepartamentoRepository, DepartamentoRepository>();
+builder.Services.AddTransient<IFuncionarioRepository, FuncionarioRepository>();
 
 var app = builder.Build();
 
