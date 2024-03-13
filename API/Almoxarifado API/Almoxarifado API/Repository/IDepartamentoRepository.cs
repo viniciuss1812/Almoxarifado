@@ -7,5 +7,6 @@ namespace Almoxarifado_API.Repository
         List<Departamento> GetDepartamento();
         void Add(Departamento departamento);
         void Delete(Departamento departamento);
+        void Update(Departamento departamento);
     }
 }

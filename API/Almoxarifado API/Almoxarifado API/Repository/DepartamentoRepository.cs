@@ -21,5 +21,10 @@ namespace Almoxarifado_API.Repository
             bdConexao.Remove(departamento);
             bdConexao.SaveChanges();
         }
+        public void Update(Departamento departamento)
+        {
+            bdConexao.Update(departamento); 
+            bdConexao.SaveChanges();    
+        }
     }
 }
