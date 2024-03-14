@@ -12,6 +12,7 @@ builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IProdutoRepository,ProdutoRepository>();
 builder.Services.AddTransient<IDepartamentoRepository, DepartamentoRepository>();
 builder.Services.AddTransient<IFuncionarioRepository, FuncionarioRepository>();
+builder.Services.AddTransient<IMotivoRepository, MotivoRepository>();
 
 var app = builder.Build();
 

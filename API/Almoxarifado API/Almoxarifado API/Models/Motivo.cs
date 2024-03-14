@@ -9,6 +9,7 @@ namespace Almoxarifado_API.Models
         public string MotDescricao { get; set; }
         public int IDCategoriadoMotivo { get; set; }
         public CategoriaMotivo CategoriaMotivo { get; set; }
+     
 
     }
 }

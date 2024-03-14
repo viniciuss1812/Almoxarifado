@@ -2,10 +2,11 @@
 
 namespace Almoxarifado_API.Repository
 {
-    public interface IMotivo
+    public interface IMotivoRepository
     {
-        List<Motivo> GetAll();
+        List<Motivo> TodososMotivos();
         void Add(Motivo motivo);
         void Update(Motivo motivo);
+        void Delete(Motivo motivo);
     }
 }

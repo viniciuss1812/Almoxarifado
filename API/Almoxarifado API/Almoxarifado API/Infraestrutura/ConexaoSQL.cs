@@ -18,11 +18,11 @@ namespace Almoxarifado_API.Infraestrutura
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CategoriaMotivo>()
-                .HasMany(e => e.Motivos)
-                .WithOne(e => e.CategoriaMotivo)
-                .HasForeignKey(e => e.IDCategoriadoMotivo)
-                .HasPrincipalKey(e => e.id);
+           modelBuilder.Entity<CategoriaMotivo>()
+              .HasMany(e => e.Motivos)
+              .WithOne(e => e.CategoriaMotivo)
+              .HasForeignKey(e => e.IDCategoriadoMotivo)
+              .HasPrincipalKey(e => e.id);
         }
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Funcionario>Funcionario{ get; set; } 

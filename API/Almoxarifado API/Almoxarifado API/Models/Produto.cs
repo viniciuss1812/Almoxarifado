@@ -9,8 +9,7 @@ namespace Almoxarifado_API.Models
         public string nome { get; set; }
         public int estoque { get; set; }
         public string? photourl { get; set; }
-       // public int idcategoria { get; set; }
-       // cu de cabelo cheio { get; set }
+       
 
     }
 }

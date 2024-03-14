@@ -54,10 +54,19 @@ Create Table Motivo
 (
 MotID int identity (1,1) primary key,
 MotDescricao varchar(200),
+IDCategoriadoMotivo int
 )
 ALTER TABLE Motivo 
 ADD CONSTRAINT IDCategoriadoMotivo
-FOREIGN KEY (MotID) REFERENCES CategoriaMotivo(id);
+FOREIGN KEY (IDCategoriadoMotivo) REFERENCES CategoriaMotivo(id);
+select * from Motivo
+select * from CategoriaMotivo
+insert into CategoriaMotivo (descricao) values ('Gestão');
+insert into CategoriaMotivo (descricao) values ('Cliente');
+insert into CategoriaMotivo (descricao) values ('Tecnico');
+
+select * from Funcionario
+
 
 create table Produto(
    id int identity(1,1) primary key,
